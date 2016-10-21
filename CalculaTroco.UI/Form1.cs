@@ -29,14 +29,24 @@ namespace CalculaTroco.UI {
             long paidAmount = long.Parse(this.UxTxtPaidAmount.Text);
             long productAmount = long.Parse(this.UxTxtProductAmount.Text);
             CalculaTrocoManager calculaTrocoManager = new CalculaTrocoManager();
-            CalculateChangeResponse calculateChangeResponse = calculaTrocoManager.CalculateChange(paidAmount, productAmount);
+            CalculateChangeRequest calculateChangeRequest = new CalculateChangeRequest();
+            calculateChangeRequest.PaidAmount = paidAmount;
+            calculateChangeRequest.ProductAmount = productAmount;
+
+            CalculateChangeResponse calculateChangeResponse = calculaTrocoManager.CalculateChange(calculateChangeRequest);
 
             if (calculateChangeResponse.Success) {
                 this.UxTxtChangeAmount.Text = calculateChangeResponse.ChangeAmount.ToString();
+
+                string coins = "";
+                foreach(KeyValuePair<long, long> coin in calculateChangeResponse.ChangeCoins) {
+                    coins += coin.Value + " moedas de " + coin.Key + " centavos \r\n";
+                }
+                this.UxTxtCoins.Text = coins;
             } else {
                 String errorMessages = "";
                 foreach (Report report in calculateChangeResponse.OperationReport) {
-                    errorMessages += report.Message + '\n';
+                    errorMessages += report.Field + ": " + report.Message + "\r\n";
                 }
                 MessageBox.Show(errorMessages, "CalculaTroco - Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
