@@ -13,6 +13,8 @@ namespace CalculaTroco.Core {
         public CalculateChangeResponse CalculateChange(CalculateChangeRequest request) {
 
             CalculateChangeResponse response = new CalculateChangeResponse();
+            Bill bill = new Bill();
+            Coin coin = new Coin();
 
             try {
                 //TODO: Salvar log de request
@@ -25,8 +27,21 @@ namespace CalculaTroco.Core {
                 long changeAmount = request.PaidAmount - request.ProductAmount;
 
                 response.ChangeAmount = changeAmount;
-                response.ChangeCoins = CalculateOptimalChangeInCoins(changeAmount);
+                
+                Dictionary<long, long> resultBill = bill.CalculateOptimalChangeInBills(changeAmount);
+                Dictionary<long, long> result = new Dictionary<long, long>();
+               
+                foreach (KeyValuePair<long,long> r in resultBill  ) {
+                    result.Add(r.Key, r.Value);
+                }
+                long resultAmount = resultBill.Sum(p => p.Key * p.Value);
+                changeAmount -= resultAmount;
+                Dictionary<long,long> resultCoin = coin.CalculateOptimalChangeInCoins(changeAmount);
+                foreach (KeyValuePair<long, long> r in resultCoin) {
+                    result.Add(r.Key, r.Value);
+                }
 
+                response.ChangeResult = result;
                 response.Success = true;
 
             }
@@ -36,26 +51,10 @@ namespace CalculaTroco.Core {
                 report.Field = "Error";
                 report.Message = "Ocorreu um erro durante o processamento da transação. Nenhuma operação foi realizada.";
                 response.OperationReport.Add(report);
-            } 
+            }
             //TODO: Salvar log de response
 
             return response;
-        }
-
-        public Dictionary<long, long> CalculateOptimalChangeInCoins(long changeAmount) {
-            long[] coins = { 100, 50, 25, 10, 5, 1 };
-
-            Dictionary<long, long> change = new Dictionary<long, long>();
-
-            foreach(long coin in coins) {
-                long coinQuantity = changeAmount / coin;                
-                if(coinQuantity > 0) {
-                    change.Add(coin,coinQuantity);
-                    changeAmount = changeAmount % coin;
-                }                
-            }
-
-            return change;
         }
     }
 }

@@ -39,7 +39,7 @@ namespace CalculaTroco.UI {
                 this.UxTxtChangeAmount.Text = calculateChangeResponse.ChangeAmount.ToString();
 
                 string coins = "";
-                foreach(KeyValuePair<long, long> coin in calculateChangeResponse.ChangeCoins) {
+                foreach(KeyValuePair<long, long> coin in calculateChangeResponse.ChangeResult) {
                     coins += coin.Value + " moedas de " + coin.Key + " centavos \r\n";
                 }
                 this.UxTxtCoins.Text = coins;

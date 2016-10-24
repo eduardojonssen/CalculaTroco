@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bill.cs" />
     <Compile Include="CalculaTrocoManager.cs" />
+    <Compile Include="Coin.cs" />
     <Compile Include="DataContracts\AbstractRequest.cs" />
     <Compile Include="DataContracts\AbstractResponse.cs" />
     <Compile Include="DataContracts\CalculateChangeRequest.cs" />
