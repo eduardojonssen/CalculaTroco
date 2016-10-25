@@ -1,4 +1,5 @@
 ﻿using CalculaTroco.Core.DataContracts;
+using CalculaTroco.Core.Processors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,8 @@ namespace CalculaTroco.Core {
         public CalculateChangeResponse CalculateChange(CalculateChangeRequest request) {
 
             CalculateChangeResponse response = new CalculateChangeResponse();
-            Bill bill = new Bill();
-            Coin coin = new Coin();
+            BillProcessor bill = new BillProcessor();
+            CoinProcessor coin = new CoinProcessor();
 
             try {
                 //TODO: Salvar log de request

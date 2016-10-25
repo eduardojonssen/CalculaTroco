@@ -4,10 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CalculaTroco.Core {
-    class Coin {
-        long[] coins = { 100, 50, 25, 10, 5, 1 };
-        public Dictionary<long, long> CalculateOptimalChangeInCoins(long changeAmount) {
+namespace CalculaTroco.Core.Processors {
+    internal class CoinProcessor : AbstractProcessor {
+        private long[] coins = { 100, 50, 25, 10, 5, 1 };
+        private string name = "Moedas";
+
+        internal override long[] AvailableValues() {
+            return this.coins;
+        }
+
+        internal override Dictionary<long, long> Calculate(long changeAmount) {
 
             Dictionary<long, long> change = new Dictionary<long, long>();
 
@@ -19,6 +25,10 @@ namespace CalculaTroco.Core {
                 }
             }
             return change;
+        }
+
+        internal override string GetName() {
+            return this.name;
         }
     }
 }
