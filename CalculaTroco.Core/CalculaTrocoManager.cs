@@ -29,20 +29,24 @@ namespace CalculaTroco.Core {
 
                 response.ChangeAmount = changeAmount;
                 
-                Dictionary<long, long> resultBill = bill.CalculateOptimalChangeInBills(changeAmount);
-                Dictionary<long, long> result = new Dictionary<long, long>();
-               
-                foreach (KeyValuePair<long,long> r in resultBill  ) {
-                    result.Add(r.Key, r.Value);
-                }
-                long resultAmount = resultBill.Sum(p => p.Key * p.Value);
-                changeAmount -= resultAmount;
-                Dictionary<long,long> resultCoin = coin.CalculateOptimalChangeInCoins(changeAmount);
-                foreach (KeyValuePair<long, long> r in resultCoin) {
-                    result.Add(r.Key, r.Value);
-                }
+                List<ChangeData> changeDataCollection = new List<ChangeData>();
 
-                response.ChangeResult = result;
+                while (changeAmount > 0) {
+
+                    // Obtém o processador adequado para calcular o troco especificado.
+                    AbstractProcessor processor = ProcessorFactory.Create(changeAmount);
+
+                    Dictionary<long,long> changeDictionary = processor.Calculate(changeAmount);
+
+                    ChangeData changeData = new ChangeData(processor.GetName());
+                    changeData.ChangeDictionary = changeDictionary;
+
+                    changeDataCollection.Add(changeData);                 
+
+                    changeAmount -= changeDictionary.Sum(p => p.Key * p.Value);
+                }
+                                              
+                response.ChangeDataCollection = changeDataCollection;
                 response.Success = true;
 
             }

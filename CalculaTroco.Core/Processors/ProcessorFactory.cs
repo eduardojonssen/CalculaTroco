@@ -12,7 +12,8 @@ namespace CalculaTroco.Core.Processors {
 
             AbstractProcessor[] availableProcessors = new AbstractProcessor[] {
                 new BillProcessor(),
-                new CoinProcessor()
+                new CoinProcessor(),
+                new SilverBarProcessor()
 
                 // Adicione novos processadores acima desta linha.
             };

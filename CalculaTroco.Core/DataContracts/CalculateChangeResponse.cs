@@ -10,7 +10,7 @@ namespace CalculaTroco.Core.DataContracts {
 
         public CalculateChangeResponse() {
 
-            this.ChangeResult = new Dictionary<long, long>();
+            this.ChangeDataCollection = new List<ChangeData>();
         }
 
         /// <summary>
@@ -21,6 +21,6 @@ namespace CalculaTroco.Core.DataContracts {
         /// <summary>
         /// Obtém ou define o valor do troco.
         /// </summary>
-        public Dictionary<long, long> ChangeResult { get; set; }
+        public List<ChangeData> ChangeDataCollection { get; set; }
     }
 }

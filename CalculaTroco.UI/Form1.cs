@@ -38,11 +38,13 @@ namespace CalculaTroco.UI {
             if (calculateChangeResponse.Success) {
                 this.UxTxtChangeAmount.Text = calculateChangeResponse.ChangeAmount.ToString();
 
-                string coins = "";
-                foreach(KeyValuePair<long, long> coin in calculateChangeResponse.ChangeResult) {
-                    coins += coin.Value + " moedas de " + coin.Key + " centavos \r\n";
+                string displayMessage = "";
+                foreach(ChangeData changeData in calculateChangeResponse.ChangeDataCollection) {
+                    foreach(KeyValuePair<long, long> changeDictionary in changeData.ChangeDictionary) {
+                        displayMessage += changeDictionary.Value + " " + changeData.ChangeType + " com o valor de " + changeDictionary.Key + " centavos \r\n";
+                    }
                 }
-                this.UxTxtCoins.Text = coins;
+                this.UxTxtCoins.Text = displayMessage;
             } else {
                 String errorMessages = "";
                 foreach (Report report in calculateChangeResponse.OperationReport) {

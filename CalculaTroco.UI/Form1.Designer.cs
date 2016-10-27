@@ -92,7 +92,7 @@
             // 
             this.UxTxtChangeAmount.Location = new System.Drawing.Point(39, 55);
             this.UxTxtChangeAmount.Name = "UxTxtChangeAmount";
-            this.UxTxtChangeAmount.Size = new System.Drawing.Size(100, 26);
+            this.UxTxtChangeAmount.Size = new System.Drawing.Size(96, 26);
             this.UxTxtChangeAmount.TabIndex = 5;
             // 
             // UxBtnCalculateChange
@@ -122,9 +122,9 @@
             // 
             this.groupBox2.Controls.Add(this.UxTxtChangeAmount);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(68, 316);
+            this.groupBox2.Location = new System.Drawing.Point(391, 193);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(298, 100);
+            this.groupBox2.Size = new System.Drawing.Size(214, 100);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             // 
@@ -136,7 +136,7 @@
             this.ajudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(430, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(684, 33);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "Menu";
             // 
@@ -174,9 +174,9 @@
             // 
             this.groupBox3.Controls.Add(this.UxTxtCoins);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(68, 438);
+            this.groupBox3.Location = new System.Drawing.Point(68, 314);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(298, 201);
+            this.groupBox3.Size = new System.Drawing.Size(537, 284);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             // 
@@ -185,7 +185,7 @@
             this.UxTxtCoins.Location = new System.Drawing.Point(39, 55);
             this.UxTxtCoins.Multiline = true;
             this.UxTxtCoins.Name = "UxTxtCoins";
-            this.UxTxtCoins.Size = new System.Drawing.Size(221, 128);
+            this.UxTxtCoins.Size = new System.Drawing.Size(478, 205);
             this.UxTxtCoins.TabIndex = 5;
             // 
             // label4
@@ -193,9 +193,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(35, 22);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 20);
+            this.label4.Size = new System.Drawing.Size(142, 20);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Moedas";
+            this.label4.Text = "Descrição do troco";
             // 
             // CalculaTroco
             // 
@@ -203,7 +203,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(430, 661);
+            this.ClientSize = new System.Drawing.Size(684, 620);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
