@@ -5,13 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CalculaTroco.Core.Processors {
-    internal class SilverBarProcessor : AbstractProcessor {
-
-        private string name = "Barras de Prata";
-        private long[] silverBars = { 100000, 50000 };
+    internal class CandyProcessor : AbstractProcessor {
+        private string name = "Balas";
+        private long[] candies = {3, 1};
 
         internal override long[] AvailableValues() {
-            return this.silverBars;
+            return this.candies;
         }
 
         internal override string GetName() {

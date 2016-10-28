@@ -15,20 +15,6 @@ namespace CalculaTroco.Core.Processors {
             return this.bills;
         }
 
-        internal override Dictionary<long, long> Calculate(long changeAmount) {
-            Dictionary<long, long> change = new Dictionary<long, long>();
-
-            foreach (long bill in bills) {
-                long billQuantity = changeAmount / bill;
-                if (billQuantity > 0) {
-                    change.Add(bill, billQuantity);
-                    changeAmount = changeAmount % bill;
-                }
-            }
-            return change;
-        }
-
-
         internal override string GetName() {
             return this.name;
         }
